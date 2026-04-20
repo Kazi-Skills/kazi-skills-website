@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className="grid md:grid-cols-4 gap-8 mb-10">
                     {/* Brand */}
                     <div className="md:col-span-2">
-                        <Image src="/logo-white-bg.jpeg" alt="Kazi Skills" width={140} height={48} className="object-contain mb-4" />
+                        <Image src="/logo-white-bg.jpeg" alt="Kazi Skills" width={130} height={44} className="object-contain mb-4" />
                         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
                             Uganda's AI-powered micro-learning marketplace. Building a future where your skill, not your background, determines your income.
                         </p>

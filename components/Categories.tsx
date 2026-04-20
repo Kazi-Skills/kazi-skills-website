@@ -10,7 +10,7 @@ const cats = [
 
 export default function Categories() {
     return (
-        <section id="categories" className="py-32 bg-gray-50/50 scroll-mt-20">
+        <section id="categories" className="py-40 lg:py-60 bg-gray-50 scroll-mt-20 border-y border-gray-100">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-24">
                     <div className="section-label mx-auto">Market Opportunities</div>

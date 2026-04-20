@@ -2,7 +2,7 @@ import FlipButton from './FlipButton'
 
 export default function Download() {
     return (
-        <section id="download" className="py-32 bg-gray-900 relative overflow-hidden scroll-mt-20">
+        <section id="download" className="py-40 lg:py-60 bg-gray-900 relative overflow-hidden scroll-mt-20">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600 rounded-full blur-[150px] opacity-20" />
