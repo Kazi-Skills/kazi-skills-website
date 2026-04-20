@@ -38,14 +38,14 @@ const testimonials = [
 
 export default function Testimonials() {
     return (
-        <section id="about" className="py-40 lg:py-64 bg-white scroll-mt-20">
+        <section id="about" className="py-24 lg:py-40 bg-white scroll-mt-20">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="text-center mb-32">
+                <div className="text-center mb-24">
                     <div className="section-label mx-auto">Success Stories</div>
-                    <h2 className="text-5xl lg:text-7xl font-black text-gray-900 mb-8 tracking-[-0.04em]" style={{ fontFamily: 'Syne, sans-serif' }}>
+                    <h2 className="text-4xl lg:text-6xl font-black text-gray-900 mb-6 tracking-[-0.04em]" style={{ fontFamily: 'Syne, sans-serif' }}>
                         Real People. <span className="gradient-text italic">Real Income.</span>
                     </h2>
-                    <p className="text-gray-500 text-xl lg:text-2xl max-w-3xl mx-auto font-medium leading-relaxed">
+                    <p className="text-gray-500 text-lg lg:text-xl max-w-3xl mx-auto font-medium leading-relaxed">
                         Join thousands of Ugandans who have transformed their lives with Kazi Skills.
                     </p>
                 </div>
@@ -58,20 +58,20 @@ export default function Testimonials() {
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
                             key={i} 
-                            className={`${t.size} relative bg-gray-50 rounded-[48px] p-10 lg:p-14 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] transition-all duration-500 border border-transparent hover:border-gray-100 group`}
+                            className={`${t.size} relative bg-gray-50 rounded-[32px] p-6 lg:p-8 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 border border-transparent hover:border-gray-100 group`}
                         >
                             <div className="flex flex-col h-full">
-                                <div className="flex items-center gap-6 mb-10">
-                                    <div className={`w-16 h-16 rounded-[24px] bg-linear-to-br ${t.color} flex items-center justify-center font-black text-white text-xl shadow-lg shrink-0 group-hover:scale-110 transition-transform duration-500`}>
+                                <div className="flex items-center gap-4 mb-8">
+                                    <div className={`w-12 h-12 rounded-[16px] bg-linear-to-br ${t.color} flex items-center justify-center font-black text-white text-lg shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-500`}>
                                         {t.name[0]}
                                     </div>
-                                    <div>
-                                        <div className="text-gray-900 font-black text-xl tracking-tight">{t.name}</div>
+                                    <div className="text-center">
+                                        <div className="text-gray-900 font-black text-lg tracking-tight">{t.name}</div>
                                         <div className="text-gray-400 text-sm font-bold uppercase tracking-wider">{t.role}</div>
                                     </div>
                                 </div>
                                 
-                                <blockquote className="text-gray-700 text-2xl lg:text-3xl font-medium leading-relaxed mb-12">
+                                <blockquote className="text-gray-700 text-xl lg:text-2xl font-medium leading-relaxed mb-10 text-center">
                                     &quot;{t.text}&quot;
                                 </blockquote>
 

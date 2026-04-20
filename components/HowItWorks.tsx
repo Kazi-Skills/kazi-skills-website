@@ -30,12 +30,12 @@ const steps = [
 
 export default function HowItWorks() {
     return (
-        <section id="how-it-works" className="py-40 lg:py-64 bg-white relative scroll-mt-20">
+        <section id="how-it-works" className="py-24 lg:py-40 bg-white relative scroll-mt-20">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-32">
-                    <div className="max-w-3xl">
+                <div className="text-center mb-24">
+                    <div className="max-w-3xl mx-auto">
                         <div className="section-label">Your Path to Income</div>
-                        <h2 className="text-5xl lg:text-7xl font-black text-gray-900 leading-[0.95] tracking-[-0.04em]" style={{ fontFamily: 'Syne, sans-serif' }}>
+                        <h2 className="text-4xl lg:text-6xl font-black text-gray-900 leading-[1] tracking-[-0.04em]" style={{ fontFamily: 'Syne, sans-serif' }}>
                             Zero to earning in <span className="gradient-text italic">4 simple steps.</span>
                         </h2>
                     </div>
@@ -54,13 +54,13 @@ export default function HowItWorks() {
                             key={i} 
                             className="relative group"
                         >
-                            <div className={`w-24 h-24 rounded-[32px] bg-linear-to-br ${step.color} flex items-center justify-center font-black text-3xl text-white mb-10 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`} style={{ fontFamily: 'Syne, sans-serif' }}>
+                            <div className={`w-20 h-20 rounded-[28px] bg-linear-to-br ${step.color} flex items-center justify-center font-black text-2xl text-white mb-8 shadow-lg group-hover:scale-110 transition-all duration-500 mx-auto`} style={{ fontFamily: 'Syne, sans-serif' }}>
                                 {step.num}
                             </div>
-                            <h3 className="text-gray-900 font-black text-3xl mb-6 tracking-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
+                            <h3 className="text-gray-900 font-black text-2xl mb-4 tracking-tight text-center" style={{ fontFamily: 'Syne, sans-serif' }}>
                                 {step.title}
                             </h3>
-                            <p className="text-gray-500 text-lg lg:text-xl leading-relaxed font-medium">{step.desc}</p>
+                            <p className="text-gray-500 text-base lg:text-lg leading-relaxed font-medium text-center">{step.desc}</p>
                             
                             {/* Decorative line for desktop */}
                             {i < 3 && (

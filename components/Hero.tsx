@@ -4,15 +4,15 @@ import FlipButton from './FlipButton'
 
 export default function Hero() {
     return (
-        <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-40 bg-white overflow-hidden">
+        <section className="relative pt-24 pb-20 lg:pt-40 lg:pb-32 bg-white overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[1000px] h-[1000px] bg-purple-100/30 rounded-full blur-[120px] -z-10" />
             <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[800px] h-[800px] bg-blue-100/30 rounded-full blur-[120px] -z-10" />
 
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+                <div className="flex flex-col items-center text-center">
                     {/* Left — Copy */}
-                    <div className="lg:col-span-7 relative z-10">
+                    <div className="max-w-4xl w-full mb-16 lg:mb-24">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -23,16 +23,16 @@ export default function Hero() {
                                 <span className="text-purple-700 text-xs font-black tracking-[0.15em] uppercase">Now Live in Uganda</span>
                             </div>
 
-                            <h1 className="text-5xl lg:text-8xl font-black leading-[0.95] text-gray-900 tracking-[-0.04em] mb-10" style={{ fontFamily: 'Syne, sans-serif' }}>
+                            <h1 className="text-4xl lg:text-7xl font-black leading-[1] text-gray-900 tracking-[-0.04em] mb-8" style={{ fontFamily: 'Syne, sans-serif' }}>
                                 Learn a Skill.<br />
                                 <span className="gradient-text italic">Start Earning.</span>
                             </h1>
 
-                            <p className="text-gray-500 text-xl lg:text-2xl leading-relaxed max-w-2xl font-medium mb-16">
+                            <p className="text-gray-500 text-lg lg:text-xl leading-relaxed max-w-xl font-medium mb-12">
                                 The AI-powered micro-learning marketplace for the next generation of Ugandan creators. 5–15 min lessons. Real world results.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row gap-8 items-start">
+                            <div className="flex flex-col sm:flex-row gap-8 items-center justify-center">
                                 <FlipButton 
                                     text1="Download App" 
                                     text2="Join 5,000+ others" 
@@ -52,7 +52,7 @@ export default function Hero() {
                     </div>
 
                     {/* Right — Phone mockup */}
-                    <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+                    <div className="relative flex justify-center w-full">
                         <motion.div 
                             initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
                             animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -63,7 +63,7 @@ export default function Hero() {
                             <div className="absolute inset-0 bg-purple-400 rounded-[80px] blur-[120px] opacity-20 scale-125" />
                             
                             {/* Main Phone */}
-                            <div className="relative w-[300px] h-[600px] bg-gray-950 rounded-[56px] border-8 border-gray-900 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)] overflow-hidden z-20">
+                            <div className="relative w-[280px] h-[560px] bg-gray-950 rounded-[48px] border-8 border-gray-900 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.4)] overflow-hidden z-20">
                                 {/* Screen content placeholder */}
                                 <div className="absolute inset-0 bg-linear-to-b from-purple-900/40 to-black pointer-events-none" />
                                 
