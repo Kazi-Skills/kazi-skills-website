@@ -1,133 +1,118 @@
-'use client'
-import { useState, useRef } from 'react'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navbar() {
-    const [open, setOpen] = useState(false)
-    const menuRef = useRef<HTMLDivElement>(null)
-    const linksRef = useRef<HTMLDivElement>(null)
-    const containerRef = useRef<HTMLDivElement>(null)
+    const [scrolled, setScrolled] = useState(false)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-    useGSAP(() => {
-        if (!menuRef.current) return
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 20)
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
 
-        if (open) {
-            document.body.style.overflow = 'hidden'
-            gsap.set(menuRef.current, { display: 'block', pointerEvents: 'auto' })
-            gsap.fromTo(
-                menuRef.current,
-                { y: -16, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }
-            )
-            gsap.fromTo(
-                '.mobile-link',
-                { y: 24, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.45, stagger: 0.08, ease: 'power2.out', delay: 0.08 }
-            )
-        } else {
-            document.body.style.overflow = ''
-            gsap.to(menuRef.current, {
-                y: -16,
-                opacity: 0,
-                duration: 0.25,
-                ease: 'power2.in',
-                onComplete: () => {
-                    if (menuRef.current) {
-                        gsap.set(menuRef.current, { display: 'none', pointerEvents: 'none', y: 0 })
-                    }
-                }
-            })
-        }
-    }, { dependencies: [open], scope: containerRef })
-
-    const toggleMenu = () => setOpen(!open)
+    const navLinks = [
+        { label: 'How it Works', href: '#how-it-works' },
+        { label: 'Categories', href: '#categories' },
+        { label: 'Success Stories', href: '#about' },
+        { label: 'For Creators', href: '#download' },
+    ]
 
     return (
-        <div className="relative" ref={containerRef}>
-            {/* Spacer to prevent content from going behind fixed navbar */}
-            <div className="h-20" />
-            
-            <nav className="fixed top-0 left-0 right-0 z-[100] bg-white border-b border-gray-100 shadow-sm h-20 flex items-center">
-                <div className="w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
-                    {/* Logo */}
-                    <div className="flex items-center gap-2.5">
-                        <div className="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center shadow-lg shadow-purple-200">
-                            <span className="text-white font-black text-lg" style={{ fontFamily: 'Syne, sans-serif' }}>K</span>
+        <>
+            <nav className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500 ${
+                scrolled ? 'py-4' : 'py-6'
+            }`}>
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div className={`relative flex items-center justify-between p-4 lg:p-5 rounded-[28px] transition-all duration-500 ${
+                        scrolled ? 'glass modern-shadow' : 'bg-transparent'
+                    }`}>
+                        {/* Logo */}
+                        <Link href="/" className="flex items-center gap-3 group">
+                            <div className="w-11 h-11 rounded-2xl bg-linear-to-br from-purple-600 to-indigo-700 flex items-center justify-center shadow-lg shadow-purple-200 group-hover:scale-110 transition-transform duration-300">
+                                <span className="text-white font-black text-xl" style={{ fontFamily: 'Syne, sans-serif' }}>K</span>
+                            </div>
+                            <span className="font-extrabold text-2xl text-gray-900 tracking-tighter" style={{ fontFamily: 'Syne, sans-serif' }}>
+                                KAZI<span className="text-purple-600">SKILLS</span>
+                            </span>
+                        </Link>
+
+                        {/* Desktop Nav */}
+                        <div className="hidden md:flex items-center gap-10">
+                            {navLinks.map(link => (
+                                <a key={link.label} href={link.href}
+                                    className="text-gray-600 hover:text-purple-600 text-[15px] font-bold transition-all relative group">
+                                    {link.label}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full" />
+                                </a>
+                            ))}
                         </div>
-                        <span className="font-extrabold text-xl text-gray-900 tracking-tighter" style={{ fontFamily: 'Syne, sans-serif' }}>
-                            KAZI<span className="text-purple-600">SKILLS</span>
-                        </span>
-                    </div>
 
-                    {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center gap-10">
-                        {[
-                            { label: 'How it Works', href: '#how-it-works' },
-                            { label: 'Categories', href: '#categories' },
-                            { label: 'Stories', href: '#about' },
-                            { label: 'For Creators', href: '#download' },
-                        ].map(item => (
-                            <a key={item.label} href={item.href}
-                                className="text-gray-600 hover:text-purple-600 text-sm font-semibold transition-all relative group">
-                                {item.label}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-600 transition-all group-hover:w-full" />
-                            </a>
-                        ))}
-                    </div>
-
-                    {/* CTA */}
-                    <div className="hidden md:flex items-center gap-3">
-                        <a href="#download"
-                            className="bg-gray-900 hover:bg-black text-white px-8 py-3 rounded-2xl text-base font-bold transition-all shadow-md hover:shadow-xl active:scale-95">
-                            Download App
-                        </a>
-                    </div>
-
-                    {/* Mobile menu button */}
-                    <button 
-                        className="md:hidden text-gray-700 p-2 rounded-xl hover:bg-gray-50 transition-colors focus:outline-none" 
-                        onClick={toggleMenu} 
-                        aria-label="Toggle menu"
-                    >
-                        <div className="w-6 h-5 relative flex flex-col justify-between">
-                            <span className={`block w-6 h-0.5 bg-gray-900 rounded-full transition-all duration-300 origin-left ${open ? 'rotate-45 translate-x-1 -translate-y-0.5' : ''}`} />
-                            <span className={`block w-6 h-0.5 bg-gray-900 rounded-full transition-all duration-300 ${open ? 'opacity-0 -translate-x-2' : ''}`} />
-                            <span className={`block w-6 h-0.5 bg-gray-900 rounded-full transition-all duration-300 origin-left ${open ? '-rotate-45 translate-x-1 translate-y-0.5' : ''}`} />
-                        </div>
-                    </button>
-                </div>
-
-                {/* GSAP Animated Mobile menu */}
-                <div
-                    ref={menuRef}
-                    className="fixed top-20 bottom-0 left-3 right-3 sm:left-4 sm:right-4 md:hidden hidden opacity-0 pointer-events-none bg-white/98 backdrop-blur-sm border border-gray-100 rounded-t-3xl shadow-2xl"
-                >
-                    <div ref={linksRef} className="h-full overflow-y-auto">
-                        <div className="max-w-7xl mx-auto px-10 sm:px-14 py-12 space-y-10">
-                        {[
-                            { label: 'How it Works', href: '#how-it-works' },
-                            { label: 'Categories', href: '#categories' },
-                            { label: 'Stories', href: '#about' },
-                            { label: 'For Creators', href: '#download' },
-                        ].map(item => (
-                            <a key={item.label} href={item.href}
-                                className="mobile-link block rounded-2xl px-4 py-3 text-gray-900 font-extrabold text-3xl tracking-tight hover:text-purple-600 transition-colors"
-                                onClick={() => setOpen(false)}>
-                                {item.label}
-                            </a>
-                        ))}
-                        <div className="mobile-link pt-8">
+                        {/* CTA */}
+                        <div className="hidden md:flex items-center gap-4">
                             <a href="#download"
-                                onClick={() => setOpen(false)}
-                                className="inline-flex mx-auto bg-purple-600 text-white px-10 py-4 rounded-[24px] text-xl font-bold text-center shadow-lg shadow-purple-200 active:scale-95 transition-transform">
-                                Download Free App
+                                className="bg-gray-900 hover:bg-black text-white px-8 py-3.5 rounded-2xl text-base font-bold transition-all shadow-lg hover:shadow-black/10 active:scale-95">
+                                Get Started
                             </a>
                         </div>
-                    </div>
+
+                        {/* Mobile Button */}
+                        <button 
+                            className="md:hidden w-12 h-12 flex items-center justify-center rounded-2xl bg-gray-50 text-gray-900 hover:bg-gray-100 transition-colors"
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        >
+                            <div className="w-6 h-5 relative flex flex-col justify-between">
+                                <span className={`block w-6 h-0.5 bg-current rounded-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                                <span className={`block w-6 h-0.5 bg-current rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+                                <span className={`block w-6 h-0.5 bg-current rounded-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
+                            </div>
+                        </button>
                     </div>
                 </div>
             </nav>
-        </div>
+
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <motion.div 
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="fixed inset-0 z-90 bg-white pt-32 px-6 md:hidden"
+                    >
+                        <div className="space-y-8">
+                            {navLinks.map((link, i) => (
+                                <motion.a
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    key={link.label}
+                                    href={link.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block text-4xl font-black text-gray-900 tracking-tighter"
+                                    style={{ fontFamily: 'Syne, sans-serif' }}
+                                >
+                                    {link.label}
+                                </motion.a>
+                            ))}
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 }}
+                                className="pt-8"
+                            >
+                                <a href="#download"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="w-full bg-purple-600 text-white py-5 rounded-3xl text-xl font-bold flex items-center justify-center shadow-xl shadow-purple-200"
+                                >
+                                    Download App
+                                </a>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     )
 }

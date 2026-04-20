@@ -1,85 +1,87 @@
+import { motion } from 'framer-motion'
+
 const testimonials = [
     {
         name: 'Brenda Nakato',
         role: 'Beauty Entrepreneur · Kampala',
-        initials: 'BN',
         text: 'I watched the makeup course on a Sunday. By Wednesday I had my first paying client. Kazi Skills changed everything for me.',
-        earn: 'Now earning UGX 450K/month',
-        color: 'bg-pink-600',
+        earn: 'UGX 450K/month',
+        color: 'from-pink-500 to-rose-600',
+        size: 'lg:col-span-2'
     },
     {
         name: 'Trevor Byaruhanga',
-        role: 'Social Media Manager · Kampala',
-        initials: 'TB',
-        text: 'The pitch template in the Social Media course alone was worth 10x the price. I landed my first client 3 days after watching.',
-        earn: 'Now earning UGX 800K/month',
-        color: 'bg-blue-600',
+        role: 'Social Media · Kampala',
+        text: 'The pitch template alone was worth 10x the price. Landed my first client 3 days after watching.',
+        earn: 'UGX 800K/month',
+        color: 'from-blue-500 to-indigo-600',
+        size: 'lg:col-span-1'
     },
     {
         name: 'Grace Apio',
         role: 'Urban Farmer · Ntinda',
-        initials: 'GA',
-        text: 'Started with tomatoes on my balcony after the Green Skills course. Now I supply 3 restaurants in Ntinda every week.',
-        earn: 'Now earning UGX 380K/month',
-        color: 'bg-green-600',
+        text: 'Started with tomatoes on my balcony after the Green Skills course. Now I supply 3 restaurants every week.',
+        earn: 'UGX 380K/month',
+        color: 'from-green-500 to-emerald-600',
+        size: 'lg:col-span-1'
     },
     {
         name: 'Sandra Kiconco',
         role: 'AI Consultant · Kampala',
-        initials: 'SK',
         text: 'I use AI to write all my client proposals now. My conversion rate doubled and I work half the hours I used to.',
-        earn: 'Saves 10+ hours per week',
-        color: 'bg-violet-600',
+        earn: 'Saves 10h/week',
+        color: 'from-violet-500 to-purple-600',
+        size: 'lg:col-span-2'
     },
 ]
 
 export default function Testimonials() {
     return (
-        <section id="about" className="py-40 lg:py-60 bg-white scroll-mt-20">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-24">
+        <section id="about" className="py-40 lg:py-64 bg-white scroll-mt-20">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                <div className="text-center mb-32">
                     <div className="section-label mx-auto">Success Stories</div>
-                    <h2 className="text-5xl lg:text-7xl font-black text-gray-900 mb-6 tracking-tighter" style={{ fontFamily: 'Syne, sans-serif' }}>
-                        Real People. <span className="gradient-text">Real Income.</span>
+                    <h2 className="text-6xl lg:text-[90px] font-black text-gray-900 mb-8 tracking-[-0.04em]" style={{ fontFamily: 'Syne, sans-serif' }}>
+                        Real People. <span className="gradient-text italic">Real Income.</span>
                     </h2>
-                    <p className="text-gray-500 text-xl max-w-2xl mx-auto font-medium">
+                    <p className="text-gray-500 text-xl lg:text-2xl max-w-3xl mx-auto font-medium leading-relaxed">
                         Join thousands of Ugandans who have transformed their lives with Kazi Skills.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <div className="grid lg:grid-cols-3 gap-8 lg:gap-10">
                     {testimonials.map((t, i) => (
-                        <div key={i} className="group relative bg-gray-50 rounded-[48px] p-10 lg:p-14 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] transition-all duration-500 border border-transparent hover:border-gray-100">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            key={i} 
+                            className={`${t.size} relative bg-gray-50 rounded-[48px] p-10 lg:p-14 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] transition-all duration-500 border border-transparent hover:border-gray-100 group`}
+                        >
                             <div className="flex flex-col h-full">
                                 <div className="flex items-center gap-6 mb-10">
-                                    <div className={`w-16 h-16 rounded-[24px] ${t.color} flex items-center justify-center font-black text-white text-xl shadow-lg flex-shrink-0`}>
-                                        {t.initials}
+                                    <div className={`w-16 h-16 rounded-[24px] bg-linear-to-br ${t.color} flex items-center justify-center font-black text-white text-xl shadow-lg shrink-0 group-hover:scale-110 transition-transform duration-500`}>
+                                        {t.name[0]}
                                     </div>
                                     <div>
-                                        <div className="text-gray-900 font-extrabold text-xl tracking-tight">{t.name}</div>
-                                        <div className="text-gray-400 text-sm font-semibold uppercase tracking-wider">{t.role}</div>
-                                    </div>
-                                    <div className="ml-auto flex gap-0.5">
-                                        {[...Array(5)].map((_, i) => (
-                                            <svg key={i} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 20 20">
-                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                            </svg>
-                                        ))}
+                                        <div className="text-gray-900 font-black text-xl tracking-tight">{t.name}</div>
+                                        <div className="text-gray-400 text-sm font-bold uppercase tracking-wider">{t.role}</div>
                                     </div>
                                 </div>
                                 
-                                <blockquote className="text-gray-700 text-2xl lg:text-3xl font-medium leading-[1.4] mb-12 italic">
-                                    "{t.text}"
+                                <blockquote className="text-gray-700 text-2xl lg:text-3xl font-medium leading-relaxed mb-12">
+                                    &quot;{t.text}&quot;
                                 </blockquote>
 
                                 <div className="mt-auto flex items-center">
-                                    <div className="h-px flex-1 bg-gray-200 mr-6" />
-                                    <span className="text-green-600 text-sm font-black bg-green-50 border border-green-100 px-6 py-3 rounded-2xl shadow-sm tracking-wide">
-                                        {t.earn}
-                                    </span>
+                                    <div className="h-px flex-1 bg-gray-200 mr-8" />
+                                    <div className="bg-white px-6 py-3 rounded-2xl shadow-sm border border-gray-100">
+                                        <span className="text-green-600 text-sm font-black tracking-wide uppercase">{t.earn}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
