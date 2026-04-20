@@ -22,7 +22,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500 ${
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                 scrolled ? 'py-4' : 'py-6'
             }`}>
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -80,7 +80,7 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 z-90 bg-white pt-32 px-6 md:hidden"
+                        className="fixed inset-0 z-40 bg-white pt-32 px-6 md:hidden"
                     >
                         <div className="space-y-8">
                             {navLinks.map((link, i) => (

@@ -4,7 +4,7 @@ import FlipButton from './FlipButton'
 
 export default function Hero() {
     return (
-        <section className="relative pt-44 pb-32 lg:pt-64 lg:pb-60 bg-white overflow-hidden">
+        <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-40 bg-white overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[1000px] h-[1000px] bg-purple-100/30 rounded-full blur-[120px] -z-10" />
             <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[800px] h-[800px] bg-blue-100/30 rounded-full blur-[120px] -z-10" />
@@ -23,7 +23,7 @@ export default function Hero() {
                                 <span className="text-purple-700 text-xs font-black tracking-[0.15em] uppercase">Now Live in Uganda</span>
                             </div>
 
-                            <h1 className="text-6xl lg:text-[100px] font-black leading-[0.95] text-gray-900 tracking-[-0.04em] mb-12" style={{ fontFamily: 'Syne, sans-serif' }}>
+                            <h1 className="text-5xl lg:text-8xl font-black leading-[0.95] text-gray-900 tracking-[-0.04em] mb-10" style={{ fontFamily: 'Syne, sans-serif' }}>
                                 Learn a Skill.<br />
                                 <span className="gradient-text italic">Start Earning.</span>
                             </h1>
@@ -63,7 +63,7 @@ export default function Hero() {
                             <div className="absolute inset-0 bg-purple-400 rounded-[80px] blur-[120px] opacity-20 scale-125" />
                             
                             {/* Main Phone */}
-                            <div className="relative w-[340px] h-[680px] bg-gray-950 rounded-[64px] border-12 border-gray-900 shadow-[0_60px_120px_-30px_rgba(0,0,0,0.4)] overflow-hidden z-20">
+                            <div className="relative w-[300px] h-[600px] bg-gray-950 rounded-[56px] border-8 border-gray-900 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)] overflow-hidden z-20">
                                 {/* Screen content placeholder */}
                                 <div className="absolute inset-0 bg-linear-to-b from-purple-900/40 to-black pointer-events-none" />
                                 

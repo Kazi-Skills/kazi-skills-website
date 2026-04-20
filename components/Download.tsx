@@ -23,7 +23,7 @@ export default function Download() {
                         <span className="text-white text-xs font-black tracking-[0.2em] uppercase">Free to Download</span>
                     </div>
 
-                    <h2 className="text-7xl lg:text-[120px] font-black text-white mb-12 leading-[0.9] tracking-[-0.05em]" style={{ fontFamily: 'Syne, sans-serif' }}>
+                    <h2 className="text-5xl lg:text-8xl font-black text-white mb-12 leading-[0.9] tracking-[-0.05em]" style={{ fontFamily: 'Syne, sans-serif' }}>
                         Ready to <span className="gradient-text italic">Level Up?</span>
                     </h2>
 

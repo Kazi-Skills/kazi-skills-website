@@ -35,7 +35,7 @@ export default function HowItWorks() {
                 <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-32">
                     <div className="max-w-3xl">
                         <div className="section-label">Your Path to Income</div>
-                        <h2 className="text-6xl lg:text-[90px] font-black text-gray-900 leading-[0.95] tracking-[-0.04em]" style={{ fontFamily: 'Syne, sans-serif' }}>
+                        <h2 className="text-5xl lg:text-7xl font-black text-gray-900 leading-[0.95] tracking-[-0.04em]" style={{ fontFamily: 'Syne, sans-serif' }}>
                             Zero to earning in <span className="gradient-text italic">4 simple steps.</span>
                         </h2>
                     </div>

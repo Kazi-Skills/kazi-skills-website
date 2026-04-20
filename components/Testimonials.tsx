@@ -42,7 +42,7 @@ export default function Testimonials() {
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="text-center mb-32">
                     <div className="section-label mx-auto">Success Stories</div>
-                    <h2 className="text-6xl lg:text-[90px] font-black text-gray-900 mb-8 tracking-[-0.04em]" style={{ fontFamily: 'Syne, sans-serif' }}>
+                    <h2 className="text-5xl lg:text-7xl font-black text-gray-900 mb-8 tracking-[-0.04em]" style={{ fontFamily: 'Syne, sans-serif' }}>
                         Real People. <span className="gradient-text italic">Real Income.</span>
                     </h2>
                     <p className="text-gray-500 text-xl lg:text-2xl max-w-3xl mx-auto font-medium leading-relaxed">
