@@ -1,3 +1,4 @@
+'use client'
 import { motion } from 'framer-motion'
 
 const steps = [
@@ -53,7 +54,7 @@ export default function HowItWorks() {
                             key={i} 
                             className="relative group"
                         >
-                            <div className={`w-24 h-24 rounded-[32px] bg-linear-gradient-to-br ${step.color} flex items-center justify-center font-black text-3xl text-white mb-10 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`} style={{ fontFamily: 'Syne, sans-serif' }}>
+                            <div className={`w-24 h-24 rounded-[32px] bg-linear-to-br ${step.color} flex items-center justify-center font-black text-3xl text-white mb-10 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`} style={{ fontFamily: 'Syne, sans-serif' }}>
                                 {step.num}
                             </div>
                             <h3 className="text-gray-900 font-black text-3xl mb-6 tracking-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
