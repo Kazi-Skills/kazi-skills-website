@@ -6,47 +6,51 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="mt-8 border-t border-brand-light bg-gradient-to-b from-brand-light to-white px-4 py-10 sm:px-6 lg:px-8"
+      className="border-t border-slate-800/80 bg-gradient-to-b from-slate-900 to-slate-950 px-4 py-12 text-slate-300 sm:px-6 sm:py-14 lg:px-8"
     >
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-lg font-bold text-slate-900">Kazi Skills</p>
-          <p className="text-sm text-slate-600">Skills for all. Earn for life.</p>
+          <p className="text-lg font-bold text-white">Kazi Skills</p>
+          <p className="mt-1 text-sm text-slate-400">Skills for all. Earn for life.</p>
         </div>
 
-        <div className="flex flex-wrap gap-4 text-sm text-slate-600">
+        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm sm:justify-end">
           {footerLinks.map((label) => (
             <Link
               key={label}
               href={`#${label.toLowerCase() === "home" ? "home" : label.toLowerCase()}`}
-              className="transition-colors duration-300 hover:text-brand"
+              className="font-medium text-slate-400 transition-colors hover:text-white"
             >
               {label}
             </Link>
           ))}
-        </div>
+        </nav>
 
-        <div className="flex items-center gap-3 text-slate-500">
-          <Link href="#" aria-label="X" className="rounded-lg bg-white p-2 hover:bg-brand-light">
+        <div className="flex items-center justify-center gap-2 sm:justify-end">
+          <Link
+            href="#"
+            aria-label="X"
+            className="rounded-xl border border-slate-700 bg-slate-800/50 px-3 py-2 text-xs font-semibold text-slate-300 transition-colors hover:border-brand-mid/50 hover:text-white"
+          >
             X
           </Link>
           <Link
             href="#"
             aria-label="Instagram"
-            className="rounded-lg bg-white p-2 hover:bg-brand-light"
+            className="rounded-xl border border-slate-700 bg-slate-800/50 px-3 py-2 text-xs font-semibold text-slate-300 transition-colors hover:border-brand-mid/50 hover:text-white"
           >
             IG
           </Link>
           <Link
             href="#"
             aria-label="LinkedIn"
-            className="rounded-lg bg-white p-2 hover:bg-brand-light"
+            className="rounded-xl border border-slate-700 bg-slate-800/50 px-3 py-2 text-xs font-semibold text-slate-300 transition-colors hover:border-brand-mid/50 hover:text-white"
           >
             in
           </Link>
         </div>
       </div>
-      <p className="mx-auto mt-8 w-full max-w-6xl text-xs text-slate-500">
+      <p className="mx-auto mt-10 w-full max-w-6xl border-t border-slate-800 pt-8 text-center text-xs text-slate-500 sm:text-left">
         © {new Date().getFullYear()} Kazi Skills. All rights reserved.
       </p>
     </footer>

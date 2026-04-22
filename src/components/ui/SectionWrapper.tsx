@@ -2,6 +2,8 @@ type SectionWrapperProps = {
   id?: string;
   title?: string;
   eyebrow?: string;
+  /** "banner" = uppercase label (default). "plain" = sentence style, no label bar look. */
+  eyebrowVariant?: "banner" | "plain";
   subtitle?: string;
   children: React.ReactNode;
   className?: string;
@@ -13,17 +15,19 @@ export function SectionWrapper({
   id,
   title,
   eyebrow,
+  eyebrowVariant = "banner",
   subtitle,
   children,
   className = "",
   tone = "default",
 }: SectionWrapperProps) {
   const isDeep = tone === "deep";
+  const isPlainEyebrow = eyebrowVariant === "plain";
 
   return (
     <section
       id={id}
-      className={`relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 ${
+      className={`relative overflow-hidden px-4 py-20 sm:px-6 sm:py-24 lg:px-8 ${
         isDeep
           ? "bg-gradient-to-br from-brand-deep via-brand-dark to-brand-deep text-white"
           : ""
@@ -38,19 +42,25 @@ export function SectionWrapper({
       )}
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         {(eyebrow || title || subtitle) && (
-          <header className="mx-auto mb-10 max-w-3xl text-center">
+          <header className="mx-auto mb-12 max-w-3xl text-center sm:mb-14">
             {eyebrow && (
               <p
-                className={`mb-3 text-sm font-semibold uppercase tracking-[0.16em] ${
-                  isDeep ? "text-brand-mid" : "text-brand"
-                }`}
+                className={
+                  isPlainEyebrow
+                    ? `mb-4 text-base font-medium leading-snug sm:text-lg ${
+                        isDeep ? "text-white/85" : "text-slate-600"
+                      }`
+                    : `mb-3 text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm ${
+                        isDeep ? "text-brand-mid" : "text-brand"
+                      }`
+                }
               >
                 {eyebrow}
               </p>
             )}
             {title && (
               <h2
-                className={`text-3xl font-bold tracking-tight sm:text-4xl ${
+                className={`text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-[2.5rem] md:leading-tight ${
                   isDeep ? "text-white" : "text-slate-900"
                 }`}
               >
@@ -59,7 +69,7 @@ export function SectionWrapper({
             )}
             {subtitle && (
               <p
-                className={`mt-4 text-base sm:text-lg ${
+                className={`mx-auto mt-5 max-w-2xl text-base leading-relaxed sm:text-lg ${
                   isDeep ? "text-slate-300" : "text-slate-600"
                 }`}
               >

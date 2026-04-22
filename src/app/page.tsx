@@ -1,5 +1,6 @@
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { LearnerChoiceSection } from "@/components/sections/LearnerChoiceSection";
 import {
   AboutProblemSection,
   CategoriesSection,
@@ -18,13 +19,14 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <LearnerChoiceSection />
         <AboutProblemSection />
-        <TeamSection />
         <SolutionSection />
         <FeaturesSection />
         <CategoriesSection />
         <HowItWorksSection />
         <RoadmapSection />
+        <TeamSection />
         <CtaSection />
       </main>
       <Footer />

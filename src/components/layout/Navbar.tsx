@@ -31,21 +31,17 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,backdrop-filter,color] duration-300 ${
         solid
           ? "border-brand-light bg-white/90 text-slate-800 backdrop-blur-md"
-          : "border-white/15 bg-transparent text-white"
+          : "border-transparent bg-transparent text-white"
       }`}
     >
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="#home" className="flex items-center gap-3">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8">
+        <Link href="#home" className="flex shrink-0 items-center">
           <Image
             src="/logo-cropped.png"
             alt="Kazi Skills logo"
             width={819}
             height={151}
-            className={`h-9 w-auto sm:h-10 transition-[filter] duration-300 ${
-              solid
-                ? ""
-                : "drop-shadow-[0_2px_14px_rgba(0,0,0,0.75)] brightness-110 contrast-110"
-            }`}
+            className="h-9 w-auto sm:h-10"
             priority
           />
         </Link>
