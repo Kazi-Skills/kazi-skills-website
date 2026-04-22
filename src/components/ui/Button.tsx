@@ -26,6 +26,19 @@ export function Button({
   const styles = `inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${variantStyles[variant]} ${className}`;
 
   if (href) {
+    const external = href.startsWith("http://") || href.startsWith("https://");
+    if (external) {
+      return (
+        <a
+          href={href}
+          className={styles}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={href} className={styles}>
         {children}

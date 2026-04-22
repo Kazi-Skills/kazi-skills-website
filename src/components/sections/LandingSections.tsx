@@ -1,11 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BarChart2, Percent, Shield, User, Users } from "lucide-react";
+import {
+  BarChart2,
+  CircleDollarSign,
+  Languages,
+  MapPinned,
+  Percent,
+  Shield,
+  ShieldCheck,
+  User,
+  Users,
+  Zap,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { AiFeaturesGrid, type AiFeatureCell } from "@/components/ui/ai-features-grid";
 import { FeatureCard, FeatureCardContent } from "@/components/ui/feature-card";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import {
+  CategoriesCarousel,
+  type CategoryGalleryItem,
+} from "@/components/sections/CategoriesCarousel";
 import { SolutionAccordion, type SolutionFeatureItem } from "@/components/sections/SolutionAccordion";
+import { MVP_DEMO_URL } from "@/lib/mvp-demo";
 
 const problemStats = [
   {
@@ -79,36 +96,130 @@ const solutionAccordionFeatures: SolutionFeatureItem[] = [
   })),
 ];
 
-const aiFeatures = [
-  "Smart search (English + Luganda)",
-  "Personalized learning paths",
-  "Income tracker (suggests gigs)",
-  "AI quality control for content",
+const aiFeatureCells: AiFeatureCell[] = [
+  {
+    icon: Languages,
+    title: "Smart search (English + Luganda)",
+    description:
+      "Find skills, lessons, and gigs in the language you think in, without rigid keyword matching.",
+  },
+  {
+    icon: MapPinned,
+    title: "Personalized learning paths",
+    description:
+      "Your next steps reflect what you finish, save, or skip—not a one size fits all playlist.",
+  },
+  {
+    icon: CircleDollarSign,
+    title: "Income tracker (suggests gigs)",
+    description:
+      "Light nudges toward gigs and income minded actions that fit the path you are already on.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "AI quality control for content",
+    description:
+      "Automated checks surface unclear or risky material before human reviewers publish.",
+  },
+  {
+    icon: Zap,
+    title: "Quick session nudges",
+    description:
+      "Short prompts after lessons reinforce the habit without long reads or heavy data use.",
+  },
+  {
+    icon: Users,
+    title: "Humans stay in the loop",
+    description:
+      "Creators and moderators keep final say so learners always know a person backs what ships.",
+  },
 ];
 
-const categories = [
+const categoryGalleryItems: CategoryGalleryItem[] = [
   {
+    id: "beauty-makeup",
     title: "Beauty & Makeup",
+    summary:
+      "Client ready techniques from brows to beats, plus retail cues so you can earn behind a chair or on call.",
+    href: MVP_DEMO_URL,
     image:
-      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    id: "digital-hustles",
     title: "Digital Hustles",
+    summary:
+      "Phone first workflows for listings, social proof, and small online offers that do not need a studio budget.",
+    href: MVP_DEMO_URL,
     image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    id: "food-business",
     title: "Food Business",
+    summary:
+      "Portioning, costing, and presentation skills for stalls, catering orders, and repeat neighborhood buyers.",
+    href: MVP_DEMO_URL,
     image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "home-baking",
+    title: "Home baking & packaged treats",
+    summary:
+      "Recipes scaled for home kitchens, packaging basics, and safe handoff so weekend batches become steady sales.",
+    href: MVP_DEMO_URL,
+    image: "/category-home-baking.png",
+  },
+  {
+    id: "content-social",
+    title: "Content & social media",
+    summary:
+      "Short form planning, captions, and simple edits so your hustle shows up consistently without burning data.",
+    href: MVP_DEMO_URL,
+    image: "/category-social-media.png",
+  },
+  {
+    id: "design-branding",
+    title: "Design & branding basics",
+    summary:
+      "Logos, flyers, and price cards that look intentional, even when you are starting from a single phone app.",
+    href: MVP_DEMO_URL,
+    image:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "retail-service",
+    title: "Retail & service side gigs",
+    summary:
+      "Stocking, customer tone, and upsell habits for shops, salons, and pop ups where foot traffic is the teacher.",
+    href: MVP_DEMO_URL,
+    image:
+      "https://images.unsplash.com/photo-1687422808248-f807f4ea2a2e?auto=format&fit=crop&w=1200&q=80",
   },
 ];
-const steps = [
-  "Sign up on your phone",
-  "Pick your skill path",
-  "Watch short practical lessons",
-  "Start earning with guided gigs",
-];
+const howItWorksSteps = [
+  {
+    title: "Sign up on your phone",
+    description:
+      "Create your account in minutes and start learning from any Android phone, no heavy onboarding.",
+  },
+  {
+    title: "Pick your skill path",
+    description:
+      "Choose a practical track aligned with what buyers near you already pay for, from beauty to digital work.",
+  },
+  {
+    title: "Watch short practical lessons",
+    description:
+      "Finish bite-sized lessons on low data, with offline-friendly access when the signal drops.",
+  },
+  {
+    title: "Start earning with guided gigs",
+    description:
+      "Turn skills into income with guided tasks, proof you can show clients, and nudges that keep momentum.",
+  },
+] as const;
 
 const roadmap = [
   { phase: "Phase 1", detail: "Kampala launch" },
@@ -176,10 +287,12 @@ export function HeroSection() {
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link
-                  href="#features"
+                  href={MVP_DEMO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex rounded-xl border border-white/90 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-slate-900"
                 >
-                  Start learning
+                  Get started
                 </Link>
                 <Link
                   href="#courses"
@@ -381,20 +494,13 @@ export function FeaturesSection() {
   return (
     <SectionWrapper
       id="features"
-      eyebrow="AI Features"
-      title="Technology designed for access and opportunity"
+      title="AI features designed for access and opportunity"
+      subtitle="Smart search, sequencing, income nudges, and quality checks use AI in a lightweight way so learners and creators stay in charge of what ships."
       className="border-t border-slate-200/80 bg-gradient-to-b from-brand-light/50 via-brand-bg to-brand-bg"
     >
       <div className="pointer-events-none absolute -right-20 top-10 h-52 w-52 rounded-full bg-brand/10 blur-3xl" />
-      <div className="grid gap-5 md:grid-cols-2">
-        {aiFeatures.map((feature, i) => (
-          <Card key={feature} className="flex gap-4">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-sm font-bold text-brand">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <p className="pt-1.5 font-medium leading-snug text-slate-800">{feature}</p>
-          </Card>
-        ))}
+      <div className="mx-auto max-w-5xl px-2 sm:px-0">
+        <AiFeaturesGrid items={aiFeatureCells} />
       </div>
     </SectionWrapper>
   );
@@ -402,85 +508,298 @@ export function FeaturesSection() {
 
 export function CategoriesSection() {
   return (
-    <SectionWrapper
+    <section
       id="courses"
-      eyebrow="Skill Categories"
-      title="Learn what the market needs now"
-      className="relative overflow-hidden bg-white"
+      className="relative overflow-hidden border-t border-slate-200/80 bg-white px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:px-8"
     >
       <div className="pointer-events-none absolute left-1/2 top-0 h-48 w-48 -translate-x-1/2 rounded-full bg-brand-mid/15 blur-3xl" />
-      <div className="grid gap-6 md:grid-cols-3">
-        {categories.map((category) => (
-          <Card
-            key={category.title}
-            className="group overflow-hidden p-0 ring-0 hover:border-brand-mid/40"
-          >
-            <div className="relative h-48 w-full overflow-hidden sm:h-52">
-              <Image
-                src={category.image}
-                alt={category.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
-              <p className="absolute bottom-3 left-4 right-4 text-sm font-semibold text-white drop-shadow-md">
-                {category.title}
-              </p>
-            </div>
-            <div className="border-t border-slate-100 px-6 py-5 text-center">
-              <h3 className="text-lg font-bold text-slate-900">{category.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Practical lessons tailored for immediate application and growth.
-              </p>
-            </div>
-          </Card>
-        ))}
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
+        <CategoriesCarousel
+          heading="Learn what the market needs now"
+          subheading="Swipe through paths that mirror what buyers actually pay for, from beauty and food to digital work and retail."
+          ctaLabel="Get started"
+          ctaHref={MVP_DEMO_URL}
+          items={categoryGalleryItems}
+        />
       </div>
-    </SectionWrapper>
+    </section>
+  );
+}
+
+function HowItWorks3DNumber({ value }: { value: number }) {
+  return (
+    <div
+      className="mx-auto flex h-[5.5rem] w-full max-w-[7.5rem] select-none items-center justify-center sm:h-[6.5rem] sm:max-w-[8.5rem]"
+      aria-hidden
+    >
+      {/* Perspective on parent so rotateX / rotateY read as true 3D (reference-style tilted numerals). */}
+      <div className="flex items-center justify-center [perspective:520px] sm:[perspective:580px]">
+        <span
+          className="inline-block origin-[50%_65%] text-[3.85rem] font-extrabold leading-none tracking-tighter text-white will-change-transform [transform-style:preserve-3d] [transform:rotateX(16deg)_rotateY(-26deg)_translateZ(0)] sm:text-[4.55rem]"
+          style={{
+            fontFamily: "var(--font-syne), ui-sans-serif, system-ui, sans-serif",
+            textShadow: `
+              0.02em 0.02em 0 #f5e6fc,
+              0.04em 0.05em 0 #e9d5f5,
+              0.07em 0.09em 0 #c96ee8,
+              0.1em 0.13em 0 #ab43d0,
+              0.14em 0.18em 0 #8b2db0,
+              0.18em 0.24em 0 #6a1a8a,
+              0.22em 0.3em 0.14em rgba(74, 15, 92, 0.42)
+            `,
+          }}
+        >
+          {value}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function HowItWorksArchAcross({ className = "" }: { className?: string }) {
+  return (
+    <div
+      className={`hidden shrink-0 items-start justify-center pt-10 lg:flex lg:w-8 xl:w-12 ${className}`}
+      aria-hidden
+    >
+      <svg
+        viewBox="0 0 48 80"
+        className="h-[4.5rem] w-full text-brand/30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M 6 68 Q 24 6 42 68"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+        />
+        <path
+          d="M 36 62 L 42 68 L 34 68"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
+  );
+}
+
+function HowItWorksArchDown({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex justify-center py-1 lg:hidden ${className}`} aria-hidden>
+      <svg
+        viewBox="0 0 48 44"
+        className="h-11 w-10 text-brand/30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M 24 8 L 24 26"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+        />
+        <path
+          d="M 16 20 L 24 30 L 32 20"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
   );
 }
 
 export function HowItWorksSection() {
   return (
     <SectionWrapper
-      eyebrow="How It Works"
-      title="From learning to earning in four simple steps"
+      id="how-it-works"
+      eyebrow="How Kazi Skills works"
+      title="Four steps from learning to earning"
       className="bg-gradient-to-b from-brand-bg to-white"
     >
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step, index) => (
-          <Card key={step} className="text-center lg:text-left">
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand to-brand-dark text-lg font-bold text-white shadow-md shadow-brand/25 lg:mx-0">
-              {index + 1}
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col items-stretch lg:flex-row lg:items-start lg:justify-between lg:gap-0 xl:justify-center xl:gap-1">
+          {howItWorksSteps.map((step, index) => (
+            <div key={step.title} className="contents">
+              <div className="flex min-w-0 flex-1 flex-col px-1 text-center sm:px-2 lg:basis-0 lg:px-2 xl:px-3">
+                <HowItWorks3DNumber value={index + 1} />
+                <h3 className="mt-5 text-lg font-bold leading-snug text-slate-900 sm:text-xl">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">{step.description}</p>
+              </div>
+              {index < howItWorksSteps.length - 1 ? (
+                <>
+                  <HowItWorksArchAcross />
+                  <HowItWorksArchDown />
+                </>
+              ) : null}
             </div>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">Step {index + 1} of 4</p>
-            <p className="mt-2 font-semibold leading-snug text-slate-800">{step}</p>
-          </Card>
-        ))}
+          ))}
+        </div>
       </div>
     </SectionWrapper>
   );
 }
 
+function RoadmapFlowArrow({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={`text-white/85 ${className}`}
+      viewBox="0 0 120 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M4 16h92"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M92 10l14 6-14 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function RoadmapFlowArrowDown({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={`text-white/85 ${className}`}
+      viewBox="0 0 32 72"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M16 8v48"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M10 48l6 14 6-14"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function RoadmapSection() {
   return (
-    <SectionWrapper
-      eyebrow="Roadmap"
-      title="Growth plan from Kampala to East Africa"
-      className="bg-gradient-to-b from-white via-brand-light/30 to-brand-bg"
+    <section
+      id="roadmap"
+      className="relative scroll-mt-24 overflow-hidden px-4 py-20 sm:px-6 sm:py-24 lg:px-8"
     >
-      <div className="relative mx-auto max-w-4xl space-y-5">
-        {roadmap.map((item, index) => (
-          <Card
-            key={item.phase}
-            className={`border-l-4 border-l-brand pl-5 sm:w-[48%] ${index % 2 === 0 ? "sm:mr-auto" : "sm:ml-auto"}`}
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">{item.phase}</p>
-            <p className="mt-2 text-lg font-semibold text-slate-900">{item.detail}</p>
-          </Card>
-        ))}
+      {/* Theme base → map (full asset, no crop) → translucent purple so map stays visible */}
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-brand-deep via-brand-dark to-brand-deep"
+          aria-hidden
+        />
+        <Image
+          src="/roadmap-east-africa-map.png"
+          alt=""
+          fill
+          priority={false}
+          className="object-contain object-center p-8 opacity-100 saturate-[0.95] sm:p-12 md:p-16"
+          sizes="100vw"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-brand-deep/58 via-brand-dark/38 to-brand-deep/68"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_65%_50%_at_50%_42%,rgba(245,230,252,0.14),transparent_62%)]"
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute inset-0 bg-grid-soft opacity-[0.06]" aria-hidden />
       </div>
-    </SectionWrapper>
+
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
+        <header className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
+          <h2 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-[2.5rem] md:leading-tight">
+            Growth plan from Kampala to East Africa
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-brand-light/90 sm:text-lg">
+            One steady flow: validate where learners and buyers already meet, scale across the country,
+            then open regional corridors for skills and income.
+          </p>
+        </header>
+
+        {/* Desktop / tablet: horizontal flow */}
+        <div className="mx-auto hidden max-w-5xl md:block">
+          <div className="flex items-stretch justify-center gap-0 lg:gap-1">
+            {roadmap.map((item, index) => (
+              <div key={item.phase} className="contents">
+                <div className="flex min-w-0 flex-1 flex-col rounded-2xl border border-slate-200/90 bg-white p-6 text-center shadow-xl shadow-black/20 ring-1 ring-slate-200/80 lg:p-8">
+                  <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-dark text-sm font-bold text-white shadow-md shadow-brand/35 ring-2 ring-brand-mid/25">
+                    {index + 1}
+                  </div>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-brand-dark">
+                    {item.phase}
+                  </p>
+                  <p className="mt-2 text-lg font-semibold leading-snug text-slate-900 lg:text-xl">
+                    {item.detail}
+                  </p>
+                </div>
+                {index < roadmap.length - 1 ? (
+                  <div className="flex w-10 shrink-0 items-center justify-center self-center lg:w-16">
+                    <RoadmapFlowArrow className="h-8 w-full max-w-[4.5rem] lg:max-w-none" />
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: vertical flow */}
+        <div className="mx-auto flex max-w-md flex-col items-center md:hidden">
+          {roadmap.map((item, index) => (
+            <div key={item.phase} className="flex w-full flex-col items-center">
+              <div className="w-full rounded-2xl border border-slate-200/90 bg-white p-6 text-center shadow-xl shadow-black/20 ring-1 ring-slate-200/80">
+                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-dark text-sm font-bold text-white shadow-md shadow-brand/35 ring-2 ring-brand-mid/25">
+                  {index + 1}
+                </div>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-brand-dark">
+                  {item.phase}
+                </p>
+                <p className="mt-2 text-lg font-semibold leading-snug text-slate-900">{item.detail}</p>
+              </div>
+              {index < roadmap.length - 1 ? (
+                <RoadmapFlowArrowDown className="my-1 h-14 w-8 shrink-0" />
+              ) : null}
+            </div>
+          ))}
+        </div>
+
+        <p className="mx-auto mt-10 max-w-2xl text-center text-[11px] leading-relaxed text-brand-light/55 sm:text-xs">
+          East Africa reference map (
+          <a
+            href="https://commons.wikimedia.org/wiki/File:East_Africa_Map.png"
+            className="underline decoration-brand-mid/50 underline-offset-2 hover:text-brand-light/85"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Wikimedia Commons
+          </a>
+          , CC&nbsp;BY-SA&nbsp;4.0, Ds2320).
+        </p>
+      </div>
+    </section>
   );
 }
 
@@ -514,7 +833,10 @@ export function TeamSection() {
 
 export function CtaSection() {
   return (
-    <SectionWrapper className="bg-gradient-to-b from-brand-bg to-brand-light/40 pb-10 sm:pb-14">
+    <SectionWrapper
+      id="start-building"
+      className="scroll-mt-24 bg-gradient-to-b from-brand-bg to-brand-light/40 pb-10 sm:pb-14"
+    >
       <Card className="border-0 bg-gradient-to-br from-brand-deep via-brand-dark to-brand px-6 py-10 text-center text-white shadow-2xl shadow-brand-deep/35 sm:px-10 sm:py-12">
         <h3 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
           Start building your future today
@@ -525,10 +847,12 @@ export function CtaSection() {
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <Link
-            href="#features"
+            href={MVP_DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-xl border-2 border-white bg-white px-6 py-3.5 text-sm font-semibold text-brand-dark shadow-lg shadow-black/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-light"
           >
-            Start Learning
+            Get started
           </Link>
           <Button
             href="#contact"

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { MVP_DEMO_URL } from "@/lib/mvp-demo";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -35,14 +36,31 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 sm:py-4 lg:px-8">
-        <Link href="#home" className="flex shrink-0 items-center">
+        <Link
+          href="#home"
+          aria-label="Kazi Skills home"
+          className="relative inline-flex h-9 shrink-0 items-center sm:h-10"
+        >
+          {/* Light wordmark for dark hero; dark wordmark when bar is solid on white */}
           <Image
-            src="/logo-cropped.png"
-            alt="Kazi Skills logo"
+            src="/logo-footer.png"
+            alt=""
             width={819}
             height={151}
-            className="h-9 w-auto sm:h-10"
             priority
+            className={`h-9 w-auto sm:h-10 transition-opacity duration-300 ${
+              solid ? "pointer-events-none opacity-0" : "opacity-100"
+            }`}
+          />
+          <Image
+            src="/logo-cropped.png"
+            alt=""
+            width={819}
+            height={151}
+            priority
+            className={`absolute left-0 top-0 h-9 w-auto sm:h-10 transition-opacity duration-300 ${
+              solid ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
           />
         </Link>
 
@@ -63,16 +81,18 @@ export function Navbar() {
         </nav>
 
         {solid ? (
-          <Button href="#contact" className="hidden sm:inline-flex">
-            Get Started
+          <Button href={MVP_DEMO_URL} className="hidden sm:inline-flex">
+            View demo
           </Button>
         ) : (
-          <Link
-            href="#contact"
+          <a
+            href={MVP_DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden border border-white/70 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-white/10 sm:inline-flex"
           >
-            Get Started
-          </Link>
+            View demo
+          </a>
         )}
       </div>
     </header>
