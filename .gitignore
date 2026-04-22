@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# local import / drop folder (full nested project)
+k-skills (1)/
+
 # production
 /build
 
